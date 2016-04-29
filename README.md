@@ -1,10 +1,10 @@
 # Berkshelfを利用したChefレシピの開発
 
-OpsWorksでBerkshelfを利用する際の構成とローカルでBerkshelfを利用する際の構成で違いがあり個人的に便利な形を整理した。
+OpsWorksでBerkshelfを利用する際とローカルでBerkshelfを利用する際で構成に違いがあるため個人的に便利な形を整理する。下記が今回落ち着いた形になる。
 
 * BerksfileはCustom Cookbookの上位のフォルダに配置する
-* VagrantでCommunity Cookbookを扱うために`berks vendor`でCookbookをダウンロードし、VagrantではCustom CookbookとCommunity Cookbookを直接両方読み込むようにする
-* Test Kitchenをうまく動作させるためにCustom CookbookのBerksfileでは上位のフォルダのBerksfileを読み込むようにコードを入れる
+* VagrantではCustom Cookbookとberks-cookbooksを直接両方読み込むようにする
+* Test Kitchenをうまく動作させるためにCustom CookbookのBerksfileは上位のフォルダのBerksfileを読み込むようにコードを入れる
 
 このリポジトリとBerksfile等の配置方法で下記を両立させる事ができる。
 
@@ -13,14 +13,12 @@ OpsWorksでBerkshelfを利用する際の構成とローカルでBerkshelfを利
 * OpsWorks Chef11でプロビジョニングができる
 * OpsWOrks Chef12でプロビジョニングができる
 
-## OpsWorksでのBerkshelfの利用に関して
+## OpsWorksでBerkshelfを使った時のエラー
 
-OpsWorks Chef11に関しては、Berkshelfで取り込んだCommunity Cookbookによって下記のエラーが発生した。
+OpsWorks Chef11に関しては、Berkshelfで取り込んだCommunity Cookbookによって下記のフォーラムにもあるエラーが発生した。
 
 [opsworks recipes do not work any more](https://forums.aws.amazon.com/thread.jspa?threadID=228072)
 
->  LoadError
->  ---------
 >  cannot load such file -- /var/lib/aws/opsworks/cache.stage2/cookbooks/compat_resource/files/lib/compat_resource/gemspec
 
 `iptables`のバージョンを固定する回避策も提示されているが自分の環境の場合効果がなかった。
@@ -29,7 +27,7 @@ OpsWorks Chef11に関しては、Berkshelfで取り込んだCommunity Cookbook�
 
 ## Chef11とChef12について
 
-Chef11とChef12でBerkshelfで記述した依存性の取り扱い方が大きく変わっている。Chef11の場合はOpsWorks側でBerksfileに記述されたCommunity Cookbookを取得しCustom Cookbookとマージした上でレシピを適用する。しかしChef12では予め自分でCommunity CookbookをCustom CookbookとともにパッケージしS3にアップロードしておく必要があり（あるいはパッケージしたものと同等の形のリポジトリを作る）、OpsWorksが依存姓を解決する動作はしない。
+Chef11の場合はOpsWorks側でBerksfileに記述されたCommunity Cookbookを取得しCustom Cookbookとマージした上でレシピを適用する。Chef12では予め自分でCommunity CookbookをCustom CookbookとともにパッケージしS3にアップロードしておく必要がある（あるいはパッケージしたものと同等の形のリポジトリを作る）。
 
 ## ローカルでVagrantの環境をプロビジョニングする
 
@@ -94,6 +92,6 @@ Stackの設定でこのリポジトリを設定し、Manage Berkshelfをオプ�
 
 ## 所感
 
-Chef12になってCommunity Cookbookを積極的に使っていくような形になっているようにも見受けられるが、如何せん使えるCommunity Cookbook自体が少なく（メンテが活発でなかったり、AmazonLinuxのサポートが怪しかったり）、またハマりどころも多いためやはり積極的に使うのは微妙に感じた。
+Chef12になってCommunity Cookbookを積極的に使っていくような形になっているようにも見受けられるが、如何せん使えるCommunity Cookbook自体が少なく（メンテが活発でなかったり、AmazonLinuxのサポートが怪しかったり）、またOpsWorks自体にハマりどころも多いためやはり積極的に使うのはどうも微妙に感じている。
 
 一方、自分で書いたCookbookをBerkshelfで依存性として利用するという使い方は良さそうに思った。ただ、Chef12ではS3にアップロードするのがとても面倒なので、相応にCookbookが再利用される等のメリットが出るまではリポジトリに並べて管理で良いのではないかと思う。
