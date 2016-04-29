@@ -1,5 +1,8 @@
 source "https://supermarket.chef.io"
 
+# https://forums.aws.amazon.com/thread.jspa?threadID=228072
+cookbook 'iptables', '= 1.0.0'
+
 cookbook 'nginx', '~> 2.7.4'
 cookbook 'rvm', '~> 0.9.2'
 cookbook 'vim', '~> 2.0.1'
