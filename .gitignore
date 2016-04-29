@@ -1,2 +1,5 @@
+.idea
 .vagrant
-
+.kitchen
+berks-cookbooks
+*tar.gz

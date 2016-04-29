@@ -1,0 +1,35 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+# Uncomment the following verifier to leverage Inspec instead of Busser (the
+# default verifier)
+# verifier:
+#   name: inspec
+
+platforms:
+  - name: centos-6.5
+    driver:
+      box: "centos6.5"
+      box_url: "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box"
+suites:
+  - name: default
+    run_list:
+      - recipe[rubydev::default]
+      - recipe[rubydev::mysql]
+    attributes: {
+      rvm: {
+        user: "root",
+        default_ruby: "ruby-2.1",
+        user_default_ruby: "ruby-2.1",
+        rubies: ["ruby-2.1"]
+      },
+      mysql: {
+        user: "rubydev",
+        password: "rubydev",
+        database: "rubydev"
+      }
+    }

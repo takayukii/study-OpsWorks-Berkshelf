@@ -1,0 +1,15 @@
+source 'https://supermarket.chef.io'
+
+metadata
+
+cookbook = File.dirname(__FILE__)
+cookbook.gsub!(/^(.+\/)/, '')
+
+berksfile = '../Berksfile'
+
+contents = File.read(berksfile)
+contents.gsub!(/(^\s*source\s*)/, '#\1')
+contents.gsub!(/(^\s*metadata\s*)/, '#\1')
+contents.gsub!(/(^.*#{cookbook}.*)/, '#\1')
+
+instance_eval(contents)

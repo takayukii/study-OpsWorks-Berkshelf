@@ -1,5 +1,9 @@
 source "https://supermarket.chef.io"
 
-cookbook 'mysql', '= 6.1.1'
-cookbook 'nginx', '= 2.7.5'
+cookbook 'nginx', '~> 2.7.4'
+cookbook 'rvm', '~> 0.9.2'
+cookbook 'vim', '~> 2.0.1'
 
+cookbook 'mysql', '~> 7.0.0'
+
+cookbook 'rubydev', path: './rubydev'
