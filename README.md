@@ -24,7 +24,7 @@ Vagrantfileでは下記のようにCustom Cookbookのフォルダとberks-cookbo
 ```
   # Chef
   config.vm.provision "chef_zero" do |chef|
-    chef.cookbooks_path = ["../", "../berks-cookbooks"]
+    chef.cookbooks_path = ['./', './berks-cookbooks']
     chef.add_recipe "vim::default"
     chef.add_recipe "rubydev::default"
     chef.add_recipe "rubydev::mysql"
@@ -89,7 +89,7 @@ Stackの設定でこのリポジトリを設定しManage Berkshelfを有効に�
 
 ### MySQLのエラー
 
-[MySQL Cookbook](https://supermarket.chef.io/cookbooks/mysql)に関しては、AmazonLinuxで検証はされているもののOpsWorks Chef11/12ともにエラーが発生し使えなかった。
+[MySQL Cookbook](https://supermarket.chef.io/cookbooks/mysql)に関しては、OpsWorks Chef11/12ともにエラーが発生し使えなかった。
 
 ## 所感
 

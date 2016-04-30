@@ -7,6 +7,8 @@ long_description 'Installs/Configures rubydev'
 version '0.1.0'
 
 depends 'rvm'
+depends 'nodejs'
+
 depends 'nginx'
 
 depends 'mysql'

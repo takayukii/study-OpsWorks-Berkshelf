@@ -2,6 +2,9 @@ DEPENDENCIES
   iptables (= 1.0.0)
   mysql (~> 7.0.0)
   nginx (~> 2.7.4)
+  nodejs
+    git: https://github.com/takayukii/chef-nodejs.git
+    revision: 6fc01a3aa5d846d293e740c939aadbf4a5c68cca
   rubydev
     path: rubydev
   rvm (~> 0.9.2)
@@ -31,6 +34,7 @@ GRAPH
     ohai (~> 2.0)
     runit (~> 1.2)
     yum-epel (~> 0.3)
+  nodejs (0.1.0)
   ohai (2.1.0)
   packagecloud (0.2.0)
   rbac (1.0.3)
