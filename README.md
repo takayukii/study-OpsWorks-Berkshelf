@@ -1,6 +1,6 @@
 # Berkshelfを利用したOpsWorks Chefレシピの開発
 
-OpsWorksでBerkshelfを利用する際とローカルでBerkshelfを利用する際で構成に違いがあるため個人的に便利な形を整理する。
+OpsWorksでBerkshelfを利用する際とローカルでBerkshelfを利用する際で構成に違いがあるため個人的に整理する。
 
 * BerksfileはCustom Cookbookの上位のフォルダに配置する
 * VagrantではCustom Cookbookとberks-cookbooksを直接両方読み込むようにする
@@ -93,4 +93,4 @@ Stackの設定でこのリポジトリを設定しManage Berkshelfを有効に�
 
 ## 所感
 
-Community Cookbookは使えるものが多くないわりにハマりどころもあるので少ししんどい印象です。
+Community Cookbookは使えるものがあまり多くないわりにハマりどころもあるので少ししんどい印象です。Custom Cookbookを使い回す仕組みとしては良さそう。
