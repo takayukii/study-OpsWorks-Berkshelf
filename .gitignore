@@ -4,3 +4,4 @@
 berks-cookbooks
 *tar.gz
 *crawler
+kitchen-test-ec2.sh

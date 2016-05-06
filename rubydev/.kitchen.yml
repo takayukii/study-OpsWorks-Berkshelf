@@ -31,5 +31,9 @@ suites:
         user: "rubydev",
         password: "rubydev",
         database: "rubydev"
+      },
+      phantomjs: {
+        version: "2.1.1",
+        base_url: "https://github.com/Medium/phantomjs/releases/download/v2.1.1"
       }
     }

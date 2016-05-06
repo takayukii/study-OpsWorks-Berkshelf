@@ -4,7 +4,9 @@ source "https://supermarket.chef.io"
 cookbook 'iptables', '= 1.0.0'
 
 cookbook 'rvm', '~> 0.9.2'
-cookbook "nodejs", git: "https://github.com/takayukii/cookbook-nodejs.git"
+cookbook 'nodejs', git: 'https://github.com/takayukii/cookbook-nodejs.git'
+
+cookbook 'phantomjs'
 
 cookbook 'nginx', '~> 2.7.4'
 cookbook 'vim', '~> 2.0.1'

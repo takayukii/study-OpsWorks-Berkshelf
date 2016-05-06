@@ -22,6 +22,7 @@ Vagrant.configure(2) do |config|
   config.vm.network :private_network, ip: '192.168.33.10'
 
   # Source Folder
+  # config.vm.synced_folder './', '/share', :nfs => true
   config.vm.synced_folder './', '/share', \
       create: true, owner: 'vagrant', group: 'vagrant', \
       mount_options: ['dmode=777,fmode=777']
@@ -49,6 +50,10 @@ Vagrant.configure(2) do |config|
         user: 'rubydev',
         password: 'rubydev',
         database: 'rubydev'
+      },
+      phantomjs: {
+          version: '2.1.1',
+          base_url: 'https://github.com/Medium/phantomjs/releases/download/v2.1.1'
       }
     }
 

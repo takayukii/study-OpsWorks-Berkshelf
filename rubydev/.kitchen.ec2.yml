@@ -1,0 +1,35 @@
+---
+driver:
+  name: ec2
+  region: ap-northeast-1
+  availability_zone: ap-northeast-1a
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: amzn
+    driver:
+      image_id: ami-29160d47
+      instance_type: t2.micro
+      security_group_ids: ["sg-da8883bf"]
+    transport:
+      username: ec2-user
+      ssh_key: "~/.ssh/<%= ENV['AWS_SSH_KEY_ID'] %>.pem"
+
+suites:
+  - name: default
+    run_list:
+      - recipe[rubydev::default]
+    attributes: {
+      rvm: {
+        user: "root",
+        default_ruby: "ruby-2.1",
+        user_default_ruby: "ruby-2.1",
+        rubies: ["ruby-2.1"]
+      },
+      phantomjs: {
+        version: "2.1.1",
+        base_url: "https://github.com/Medium/phantomjs/releases/download/v2.1.1"
+      }
+    }

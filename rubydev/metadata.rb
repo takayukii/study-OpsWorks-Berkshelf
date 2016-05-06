@@ -9,6 +9,9 @@ version '0.1.0'
 depends 'rvm'
 depends 'nodejs'
 
+depends 'phantomjs'
+
 depends 'nginx'
 
 depends 'mysql'
+depends 'yum'
