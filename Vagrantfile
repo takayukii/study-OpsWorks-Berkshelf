@@ -29,7 +29,9 @@ Vagrant.configure(2) do |config|
 
   # Chef
   config.vm.provision 'chef_zero' do |chef|
-    chef.cookbooks_path = ['./', './berks-cookbooks']
+    chef.nodes_path = './'
+    chef.cookbooks_path = ['./berks-cookbooks']
+
     chef.add_recipe 'rubydev::default'
     chef.add_recipe 'rubydev::mysql'
 

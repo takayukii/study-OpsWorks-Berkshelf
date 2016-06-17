@@ -94,3 +94,10 @@ Stackの設定でこのリポジトリを設定しManage Berkshelfを有効に�
 ## 所感
 
 Community Cookbookは使えるものがあまり多くないわりにハマりどころもあるので少ししんどい印象です。Custom Cookbookを使い回す仕組みとしては良さそう。
+
+## このVagrantfileの利用方法
+
+```
+$ berks vendor
+$ vagrant up
+```
